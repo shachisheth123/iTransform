@@ -1,0 +1,59 @@
+.modulebox {
+    padding-left: 17px;
+}
+
+.modules {
+    margin-top: 32px;
+}
+
+.module-name {
+    color: #000;
+    font-size: 20px;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+.modulelist {
+    list-style-type: none;
+}
+
+.module-title {
+    font-size: 15px;
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: 600;
+    color: #1d37b5;
+}
+
+.next-prev {
+    display: block;
+    margin: 0 auto;
+}
+
+.pagination li:first-child {
+    margin-right: 20px;
+}
+
+.pagination li {
+    width: 100px;
+    text-align: center;
+}
+
+
+
+.nav-next,
+.nav-next a,
+.nav-prev,
+.nav-prev a {
+    background: #408eef;
+    border: 1px solid #408eef;
+    font-size: 15px;
+    color: #fff;
+    transition: all .5s;
+}
+
+.nav-next:hover,
+.nav-next a:hover,
+.nav-prev:hover,
+.nav-prev a:hover{
+    background: #3a71b5;
+    border : 1px solid #3a71b5;
+}

@@ -1,0 +1,16 @@
+<div class="" id="login-page"  >
+    <div class="form-box">
+        <form  (ngSubmit)="onSubmit()" #userLoginForm="ngForm">
+            <input type="text" class="form-control" placeholder="userName"
+            name="userName" [(ngModel)]="auth.userName">
+
+            <input type="password" class="form-control" placeholder="Password" 
+            name="password" [(ngModel)]="auth.password">
+           
+            <input type="submit" class="btn btn-social" value="LOGIN" />
+            <a routerLink="/signup" class="login-action" title="Sign up">
+                <p>New User?&nbsp;Signup</p>
+            </a>
+        </form>
+    </div>
+</div>

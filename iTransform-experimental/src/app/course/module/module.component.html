@@ -1,0 +1,31 @@
+<h5>course progress {{progress}}%</h5>
+<mat-progress-bar mode="determinate" value="progress"></mat-progress-bar>
+<div class="row modulebox">
+    <div class="col-sm-12">
+        <div *ngIf="modules" class="modules">
+            <h5 class="module-name">{{module.moduleName}}</h5>
+            <ul *ngFor="let mod of module.moduleDetails" class="modulelist">
+              <li>
+                <h5 class="module-title">{{mod.title}}</h5>
+              </li>
+              <li>{{mod.description}}</li>
+              <li>{{mod.codesnippet}}</li>
+              <li>
+               <a href="{{mod.youtubelinke}}">{{mod.youtubelink}}</a>
+              </li>
+            </ul>
+            </div>
+    </div>
+    
+    <nav aria-label="..." class="next-prev">
+      <ul class="pagination">
+        <li class="page-item nav-prev">
+          <a class="page-link" (click)="previous()" >Previous</a>
+        </li>
+        
+        <li class="page-item nav-next">
+          <a class="page-link" (click)="next()">Next</a>
+        </li>
+      </ul>
+    </nav>
+</div>

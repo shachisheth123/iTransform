@@ -30,11 +30,11 @@ export class RegistrationComponent {
 
         this.registrationForm=this.fb.group({
 
-            userName: ["",[Validators.required]],
-            name:["",[Validators.required]],
+            userName: ["",Validators.required],
+            name:["",Validators.required],
             email: ["", [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]],
-            contactNumber : ["",Validators.required, Validators.pattern("^\d{10}$")],
-            password: ["", [Validators.required, Validators.minLength(10)]]
+            contactNumber : ["",[Validators.required, Validators.pattern("^\d{10}$")]],
+            password: ["",[Validators.required, Validators.minLength(10)]]
         });
     }
 
@@ -43,12 +43,18 @@ export class RegistrationComponent {
         console.log(this.course)
         this.user.course = this.course;
         console.log(this.user.course);
+        Object.assign(this.user,this.registrationForm.value);
         
         this.userService.addNewUser(this.registrationForm.value).subscribe((data)=>{
             this.user = data;
             this.user.course = this.course;
             this.courseService.updateUserCourse(this.user).subscribe((data) =>{
-                if(data!=null){
+                if(this.user.contactNumber == 0 && this.user.name=="" && this.user.email=="" && this.user.password=="" && this.user.userName==""){
+                    alert("Registration is unsuccessful")
+                    this.router.navigate(["/login"]);
+                }
+                else 
+                {
                     alert("Registration is successfull")
                     this.router.navigate(["/login"]);
                 }
@@ -58,5 +64,17 @@ export class RegistrationComponent {
         })
 
     }
+
+    get userName() { return this.registrationForm.get("userName"); }
+    get name() { return this.registrationForm.get("name"); }
+    get email() { return this.registrationForm.get("email"); }
+    get password() { return this.registrationForm.get("password"); }
+    get contactNumber() { return this.registrationForm.get("contactNumber"); }
+    
+    
+    // get name() { return this.registrationForm.controls.name; }
+    // get email() { return this.registrationForm.controls.email; }
+    // get password() { return this.registrationForm.controls.password; }
+    // get contactNumber() { return this.registrationForm.controls.contactNumber; }
 
 }

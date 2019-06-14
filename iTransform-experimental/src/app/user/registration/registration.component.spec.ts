@@ -14,11 +14,13 @@ describe ("RegistrationComponenet" , () => {
             imports: [ReactiveFormsModule, FormsModule]
         })
         fixture = TestBed.createComponent(RegistrationComponent);
-
-
         registrationComponent = fixture.componentInstance;
         registrationComponent.ngOnInit;
         
+    })
+
+    it("form invalid when empty", () => {
+        expect(registrationComponent.registrationForm).toBeFalsy();
     })
 
 

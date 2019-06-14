@@ -3,6 +3,7 @@ import { CourseService } from '../course.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Courses, CourseChapter, ChapterModule } from '../course';
 import { User } from 'src/app/user/user';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -18,11 +19,10 @@ export class ModuleComponent implements OnInit {
     courses: Courses[];
 
     constructor(private courseService: CourseService,
-        private route: ActivatedRoute,
-        private router: Router) { }
+                private route: ActivatedRoute,
+                private router: Router, private sanitizer: DomSanitizer) { }
 
     actualCourse: Courses;
-    
     course: Courses;
     chapters: CourseChapter[]
     modules: ChapterModule[];
@@ -64,10 +64,10 @@ export class ModuleComponent implements OnInit {
                 }
             }
             this.length = this.array.length;
-            console.log(this.array)
-            console.log(this.course)
+            console.log(this.array);
+            console.log(this.course);
             this.module = this.chapters[this.chapterId].chapterModule[this.moduleId];
-            console.log(this.module)
+            console.log(this.module);
         })
 
 
@@ -78,16 +78,20 @@ export class ModuleComponent implements OnInit {
                 this.moduleCount++
                 if (this.chapters[i].chapterModule[j].complete) {
                     this.count++
-                    console.log(this.count)
+                    console.log(this.count);
                 }
             }
         }
-        console.log(this.moduleCount)
+
+       
+        console.log(this.moduleCount);
         this.progress = Number((this.count / this.moduleCount) * 100);
-        console.log(this.count)
+        console.log(this.count);
+
+
     }
 
-
+    
 
 
     next() {
@@ -133,10 +137,11 @@ export class ModuleComponent implements OnInit {
         for (let i = this.array.length - 1; i >= 0; i--) {
             if (value == this.array[i] && i != 0) {
                 let got = this.array[i - 1];
-                console.log(got)
+                console.log(got);
                 this.router.navigate(["chapters/" + this.courseId + "/modules/" + this.courseId + "/" + Number(got.charAt(0)) + "/" + Number(got.charAt(1))]);
             }
         }
     }
+
 
 }

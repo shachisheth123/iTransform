@@ -23,33 +23,31 @@ export class RegistrationComponent {
         this.user = new User();
         this.userService.getAllCourses().subscribe((data) =>{
             this.course = data;
-        console.log(this.course)
-            
-        })
-        
+        console.log(this.course);
+        });
 
         this.registrationForm=this.fb.group({
 
-            userName: ["",Validators.required],
-            name:["",Validators.required],
-            email: ["", [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]],
-            contactNumber : ["",[Validators.required, Validators.pattern("^\d{10}$")]],
-            password: ["",[Validators.required, Validators.minLength(10)]]
+            userName: ['', Validators.required],
+            name: ['', Validators.required],
+            email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+            contactNumber : ['', [Validators.required, Validators.pattern('^\d{10}$')]],
+            password: ['', [Validators.required, Validators.minLength(10)]]
         });
     }
 
-    registerNewUser(){
+    registerNewUser() {
         console.log(this.registrationForm.value);
-        console.log(this.course)
+        console.log(this.course);
         this.user.course = this.course;
         console.log(this.user.course);
-        Object.assign(this.user,this.registrationForm.value);
-        
-        this.userService.addNewUser(this.registrationForm.value).subscribe((data)=>{
+        Object.assign(this.user, this.registrationForm.value);
+        this.userService.addNewUser(this.registrationForm.value).subscribe((data) => {
             this.user = data;
             this.user.course = this.course;
-            this.courseService.updateUserCourse(this.user).subscribe((data) =>{
-                if(this.user.contactNumber == 0 && this.user.name=="" && this.user.email=="" && this.user.password=="" && this.user.userName==""){
+            this.courseService.updateUserCourse(this.user).subscribe((data) => {
+                // tslint:disable-next-line:max-line-length
+                if(this.user.contactNumber == 0 && this.user.name == '' && this.user.email=='' && this.user.password=="" && this.user.userName==""){
                     alert("Registration is unsuccessful")
                     this.router.navigate(["/login"]);
                 }

@@ -9,12 +9,11 @@ import { User } from 'src/app/user/user';
 })
 export class CourseComponent implements OnInit{
     courses: Courses[];
-    user:User;
+    user: User;
     constructor(private courseService: CourseService) {}
 
     ngOnInit(): void {
-        
-        this.user = JSON.parse(sessionStorage.getItem("user"))
+        this.user = JSON.parse(sessionStorage.getItem("user"));
         this.courses = this.user.course;
         console.log(this.courses);
     }

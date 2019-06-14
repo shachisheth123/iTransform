@@ -1,13 +1,10 @@
 <div class="" id="login-page"  >
     <div class="form-box">
-        <form  (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-            <input type="text"  placeholder="userName"
-            name="userName" formControlName="userName" class="form-control box1"
-              id="userName"
-              [class.is-invalid]="userName.touched && userName.invalid" required />
+        <form  (ngSubmit)="onSubmit()" [formGroup]="loginForm" #userLoginForm="ngForm">
+            <input type="text"  placeholder="userName" name="userName" formControlName="userName" class="form-control box1"
+              id="userName" [class.is-invalid]="userName.touched && userName.invalid" [(ngModel)]="auth.userName" required />
 
-            <input type="password" class="form-control" placeholder="Password" 
-            name="password" >
+            <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="auth.password" formControlName="password" id="password" [class.is-invalid]="password.touched && password.invalid" required/>
            
             <input type="submit" class="btn btn-social" value="LOGIN" />
             <a routerLink="/signup" class="login-action" title="Sign up">

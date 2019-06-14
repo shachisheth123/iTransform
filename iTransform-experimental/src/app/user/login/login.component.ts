@@ -8,51 +8,48 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
-    user:User;
-    auth:Authenticate;
+    user: User;
+    auth: Authenticate;
 
-    constructor(private fb:FormBuilder,private userService:UserService,
-        private router:Router){
-            this.auth = new Authenticate()
+    constructor(private fb: FormBuilder, private userService: UserService,
+                private router: Router) {
+            this.auth = new Authenticate();
         }
-        @Output() loggedIn = new EventEmitter<User>();
+        // @Output() loggedIn = new EventEmitter<User>();
 
         loginForm: FormGroup;
-        
         ngOnInit() {
             this.loginForm = this.fb.group({
-                email: ["", [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]],
-                password: ["", [Validators.required, Validators.minLength(10)]]
-            })
+                userName : ['', Validators.required],
+                password : ['', Validators.required]
+            });
         }
-    
-        onSubmit1() {
-            console.log(this.loginForm.value);
-            if (this.loginForm.valid) {
-                this.loggedIn.emit(
-                    // new User(this.loginForm.value.email,this.loginForm.value.password)
-                );
-            }
-        }
-    onSubmit(){
-
-        this.userService.getUserAuthentication(this.auth.userName,this.auth.password).subscribe((data) => {
+        // onSubmit1() {
+        //     console.log(this.loginForm.value);
+        //     if (this.loginForm.valid) {
+        //         this.loggedIn.emit(
+        //             // new User(this.loginForm.value.email,this.loginForm.value.password)
+        //         );
+        //     }
+        // }
+    onSubmit() {
+        this.userService.getUserAuthentication(this.auth.userName, this.auth.password).subscribe((data) => {
             this.user = data;
-
-
+            console.log(data);
             if (this.user != null) {
-                    //setting session storage
-                    sessionStorage.setItem("userName", JSON.stringify(this.user));
-                    //console.log(JSON.parse(sessionStorage.getItem("user")));
+                    // setting session storage
+                    sessionStorage.setItem('user', JSON.stringify(this.user));
+                    // console.log(JSON.parse(sessionStorage.getItem("user")));
                     this.router.navigate(['/courses']);
             } else {
-                alert("please enter correct userName and password")
+                alert('please enter correct userName and password');
                 this.router.navigate(['/login']);
             }
 
         });
+
 
     }
 

@@ -11,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ChaptersComponent } from './chapters/chapters.component';
 import { AllQuizComponent } from './quiz/allquiz/allquiz.component';
-import { ModuleComponent } from './module/module.component';
+import { ModuleComponent, SafePipe } from './module/module.component';
+import { HighlightJsModule } from 'ngx-highlight-js';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { ModuleComponent } from './module/module.component';
         QuizComponent,
         ChaptersComponent,
         AllQuizComponent,
-        ModuleComponent
+        ModuleComponent,
+        SafePipe
     ],
     imports: [
         BrowserModule,
@@ -28,7 +30,7 @@ import { ModuleComponent } from './module/module.component';
         RouterModule.forChild(CourseRoute),
         BrowserAnimationsModule,
         MatProgressBarModule,
-        
+        HighlightJsModule
     ],
     providers:[
         CourseService,

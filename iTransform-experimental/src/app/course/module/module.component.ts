@@ -1,14 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, PipeTransform, Pipe } from '@angular/core';
 import { CourseService } from '../course.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Courses, CourseChapter, ChapterModule } from '../course';
 import { User } from 'src/app/user/user';
 import { DomSanitizer } from '@angular/platform-browser';
 
-
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+}
 @Component({
-    templateUrl:"./module.component.html",
-    styleUrls : ["./module.component.css"]
+    templateUrl: './module.component.html',
+    styleUrls : ['./module.component.css']
 })
 export class ModuleComponent implements OnInit {
 
@@ -20,7 +26,7 @@ export class ModuleComponent implements OnInit {
 
     constructor(private courseService: CourseService,
                 private route: ActivatedRoute,
-                private router: Router, private sanitizer: DomSanitizer) { }
+                private router: Router) { }
 
     actualCourse: Courses;
     course: Courses;
@@ -30,7 +36,7 @@ export class ModuleComponent implements OnInit {
     courseId: number;
     chapterId: number;
     moduleId: number;
-
+        video: string;
     array: Array<String> = [];
     value: string;
     length = 0;
@@ -68,7 +74,9 @@ export class ModuleComponent implements OnInit {
             console.log(this.course);
             this.module = this.chapters[this.chapterId].chapterModule[this.moduleId];
             console.log(this.module);
-        })
+            console.log(this.module.moduleDetails[0].youtubelink);
+            this.video = this.module.moduleDetails[0].youtubelink;
+        });
 
 
         for (let i = 0; i < this.chapters.length; i++) {

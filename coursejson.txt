@@ -13,7 +13,7 @@
                             "title": "Declare Classes",
                             "description" : "When you write code in Java, you're writing classes or interfaces Within those classes as you know  are variables and methods (plus a few other things) How you declare your classes , methods, and variables dramatically affects your code's behavior. For example a public method can be accessed from code running anywhere in your application. Mark that method private though and it vanishes from everyone's radar (except the class in which it was declared). For this objective we'll study the ways in which you can declare and modify (or not) a class. You'll find that we cover modifiers in an extreme level of detail and though we know you're already familiar with them we're starting from the very beginning. Most Java programmers think they know how all the modifiers work but on closer study often find out that they don't (at least not to the degree needed for the exam). Subtle distinctions are everywhere so you need to be absolutely certain you're completely solid on everything in this section's objectives before taking the exam.",
                             "codesnippet" : "class MyClass { }",
-                            "youtubelink" : "https://www.youtube.com/watch?v=T2AJQhaUVLI"
+                            "youtubelink" : "https://www.youtube.com/embed/T2AJQhaUVLI"
                         },
                         {
                             "title" : "Class Declarations and Modifiers",

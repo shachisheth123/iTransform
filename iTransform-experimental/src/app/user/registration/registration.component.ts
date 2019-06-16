@@ -18,6 +18,7 @@ export class RegistrationComponent {
     user:User;
     course :Courses[];
     registrationForm : FormGroup;
+    submitted = false;
     ngOnInit(){
 
         this.user = new User();
@@ -32,9 +33,10 @@ export class RegistrationComponent {
             name: ['', Validators.required],
             email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
             contactNumber : ['', [Validators.required, Validators.pattern('^\d{10}$')]],
-            password: ['', [Validators.required, Validators.minLength(10)]]
+            password: ['', [Validators.required, Validators.minLength(8)]]
         });
     }
+
 
     registerNewUser() {
         console.log(this.registrationForm.value);
@@ -48,12 +50,12 @@ export class RegistrationComponent {
             this.courseService.updateUserCourse(this.user).subscribe((data) => {
                 // tslint:disable-next-line:max-line-length
                 if(this.user.contactNumber == 0 && this.user.name == '' && this.user.email=='' && this.user.password=="" && this.user.userName==""){
-                    alert("Registration is unsuccessful")
-                    this.router.navigate(["/login"]);
+                    alert("Registration is unsuccessful");
                 }
                 else 
                 {
-                    alert("Registration is successfull")
+                    this.submitted = true;
+                    alert("Registration is successful");
                     this.router.navigate(["/login"]);
                 }
             })

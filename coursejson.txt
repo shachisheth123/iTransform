@@ -48,7 +48,7 @@
                         {
                             "title" : "Java Modifiers",
                             "description": "Like other languages, it is possible to modify classes, methods, etc., by using modifiers. There are two categories of modifiers −",
-                            "submodule": [
+                            "subModule": [
                                 {
                                     "subtitle" : "Access Modifiers ",
                                     "subdescription" : " default, public , protected, private"
@@ -77,14 +77,92 @@
                     "isComplete":false
                 },
                 {
-                    "moduleName" : "Declare Interfaces",
+                    "moduleName" : "Object and Classes",
                     "moduleDetails": [
                         {
-                            "title": "Declare Interfaces",
-                            "description": "When you create an interface, you're defining a contract for what a class can do,without saying anything about how the class will do it. An interface is a contract.You could write an interface Bounceable, for example, that says in effect,This is the Bounceable interface. Any class type that implements this interface must agree to write the code for the bounce() and setBounceFactor() methods.By defining an interface for Bounceable, any class that wants to be treated as a Bounceable thing can simply implement the Bounceable interface and provide code for the interface's two methods. Interfaces can be implemented by any class, from any inheritance tree. This lets you take radically different classes and give them a common characteristic.For example, you might want both a Ball and a Tire to have bounce behavior, but Ball and Tire don't share any inheritance relationship; Ball extends Toy while Tire extends only java.lang.Object. All interface methods are implicitly public and abstract. In other words,you do not need to actually type the public or abstract modifiers in the method declaration, but the method is still always public and abstract.All variables defined in an interface must be public, static, and final in other words, interfaces can declare only constants, not instance variables.Interface methods must not be static.Because interface methods are abstract, they cannot be marked final,strictfp, or native.An interface can extend one or more other interfaces.An interface cannot extend anything but another interface.An interface cannot implement another interface or class.An interface must be declared with the keyword interface.Interface types can be used polymorphically (see Chapter 2 for more details)."
+                            "title": "Objects",
+                            "description": "Let us now look deep into what are objects. If we consider the real-world, we can find many objects around us, cars, dogs, humans, etc. All these objects have a state and a behavior.\n If we consider a dog, then its state is - name, breed, color, and the behavior is - barking, wagging the tail, running.\n If you compare the software object with a real-world object, they have very similar characteristics.\n Software objects also have a state and a behavior. A software object's state is stored in fields and behavior is shown via methods.\n So in software development, methods operate on the internal state of an object and the object-to-object communication is done via methods."
+                        },
+                        {
+                            "title": "Classes",
+                            "description": "A class is a blueprint from which individual objects are created.\n Following is a sample of a class.",
+                            "subModule": [
+                                {
+                                    "subtitle" : "Local variables",
+                                    "subdescription": "Variables defined inside methods, constructors or blocks are called local variables. The variable will be declared and initialized within the method and the variable will be destroyed when the method has completed."
+                                },
+                                {
+                                    "subtitle": "Instance variables",
+                                    "subdescription": " Instance variables are variables within a class but outside any method. These variables are initialized when the class is instantiated. Instance variables can be accessed from inside any method, constructor or blocks of that particular class."
+                                },
+                                {
+                                    "subtitle": "Class variables ",
+                                    "subdescription": " Class variables are variables declared within a class, outside any method, with the static keyword."
+                                }, {
+                                    "subdescription": "A class can have any number of methods to access the value of various kinds of methods. In the above example, barking(), hungry() and sleeping() are methods."
+                                }
+                            ],
+                            "codesnippet": "public class Dog { \nString breed;\nint age;\nString color;\nvoid barking() { \n  } \nvoid hungry() { \n  }\n void sleeping() {\n   }\n }"
+                        },
+                        {
+                            "title": "Constructors",
+                            "description": "When discussing about classes, one of the most important sub topic would be constructors. Every class has a constructor. If we do not explicitly write a constructor for a class, the Java compiler builds a default constructor for that class.\n Each time a new object is created, at least one constructor will be invoked. The main rule of constructors is that they should have the same name as the class. A class can have more than one constructor.\n Following is an example of a constructor − ",
+                            "codesnippet": "public class Puppy { \n public Puppy() { \n  } \npublic Puppy(String name) { \n // This constructor has one parameter, name. \n  } \n  }"
+                        },
+                        {
+                            "title": "Creating an Object",
+                            "description": "As mentioned previously, a class provides the blueprints for objects. So basically, an object is created from a class. In Java, the new keyword is used to create new objects.\n There are three steps when creating an object from a class −",
+                            "subModule": [
+                                {
+                                    "subtitle" : "Declaration",
+                                    "subdescription": "A variable declaration with a variable name with an object type."
+                                },
+                                {
+                                    "subtitle": "Instantiation ",
+                                    "subdescription" : " The 'new' keyword is used to create the object.",                                    
+                                },
+                                {
+                                    "subtitle": "Initialization",
+                                    "subdescription": "The 'new' keyword is followed by a call to a constructor. This call initializes the new object."
+                                }
+                            ],
+                            "codesnippet": "public class Puppy { \n public Puppy(String name) {\n // This constructor has one parameter, name.\n System.out.println('Passed Name is :' + name );\n} \npublic static void main(String []args) { \n// Following statement would create an object myPuppy  \nPuppy myPuppy = new Puppy( 'tommy' );\n }\n }"
+                        },
+                        {
+                            "title": "Accessing Instance Variables and Methods",
+                            "description": "nstance variables and methods are accessed via created objects. To access an instance variable, following is the fully qualified path −",
+                            "codesnippet" : "/* First create an object */ \n ObjectReference = new Constructor();\n/* Now call a variable as follows */\nObjectReference.variableName;\n /* Now you can call a class method as follows */ \n ObjectReference.MethodName();"
+                        },
+                        {
+                            "title": "Java Package",
+                            "description": "In simple words, it is a way of categorizing the classes and interfaces. When developing applications in Java, hundreds of classes and interfaces will be written, therefore categorizing these classes is a must as well as makes life much easier."
+                        },
+                        {
+                            "title": "Import Statements",
+                            "description": "In Java if a fully qualified name, which includes the package and the class name is given, then the compiler can easily locate the source code or classes. Import statement is a way of giving the proper location for the compiler to find that particular class.\n For example, the following line would ask the compiler to load all the classes available in directory java_installation/java/io −",
+                            "codesnippet" : "import java.io.*;"
                         }
                     ],
                     "isComplete":false
+                },
+                {
+                    "moduleName": "Constructors",
+                    "moduleDetails":[
+                        {
+                            "description": "A constructor initializes an object when it is created. It has the same name as its class and is syntactically similar to a method. However, constructors have no explicit return type.\nTypically, you will use a constructor to give initial values to the instance variables defined by the class, or to perform any other start-up procedures required to create a fully formed object.\nAll classes have constructors, whether you define one or not, because Java automatically provides a default constructor that initializes all member variables to zero. However, once you define your own constructor, the default constructor is no longer used.",
+                            "subModule": [
+                                {
+                                    "subtitle" : "Java allows two types of constructors namely −",
+                                    "subdescription": "No argument Constructors"
+                                },
+                                {
+                                    "subdescription": "Parameterized Constructors"
+                                }
+                            ],
+                            "codesnippet" : "class ClassName {\n ClassName() { \n } \n }"
+                        }
+                    ],
+                    "isComplete": false
                 }
             ],
             "chapterQuiz": [
@@ -96,7 +174,7 @@
                     "option3": "-2147483648 to 2147483647",
                     "option4": "None of the mentioned",
                     "answer": "-32768 to 32767",
-                    "isComplete": "false"
+                    "isComplete": false
                 },
                 {
                     "quizId": 2,
@@ -106,7 +184,7 @@
                     "option3" :   "boolean b3 = false",
                     "option4": "boolean b4 = ‘true’",
                     "answer":"boolean b3 = false",
-                    "isComplete": "false"
+                    "isComplete": false
                 },
                 {
                     "quizId": 3,
@@ -116,7 +194,7 @@
                     "option3": "identifier & keyword",
                     "option4": " none of the mentioned",
                     "answer": "keyword",
-                    "isComplete": "false"
+                    "isComplete": false
                 },
                 {
                     "quizId": 4,
@@ -126,7 +204,7 @@
                     "option3": "Abstract class",
                     "option4": "ArrayList class",
                     "answer": "Object class",
-                    "isComplete": "false"
+                    "isComplete": false
                 },
                 {
                     "quizId": 5,
@@ -136,7 +214,7 @@
                     "option3": "abstract and extends",
                     "option4" : "none of the mentioned",
                     "answer": "abstract",
-                    "isComplete": "false"
+                    "isComplete": false
                 }
             ]
         },

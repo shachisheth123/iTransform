@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
             console.log(data);
             if (this.user != null) {
                     // setting session storage
-                    sessionStorage.setItem('user', JSON.stringify(this.user));
+                    sessionStorage.setItem("user", JSON.stringify(this.user));
                     // console.log(JSON.parse(sessionStorage.getItem("user")));
                     this.router.navigate(['/courses']);
             } else {

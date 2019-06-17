@@ -101,11 +101,9 @@ export class ModuleComponent implements OnInit {
 
     
 
-
     next() {
-
-        this.module.complete = true;
-        this.courseService.updateUserCourse(this.user).subscribe((data)=>{
+        this.user.course[this.courseId].courseChapter[this.chapterId].chapterModule[this.moduleId].complete = true;
+       this.courseService.updateUserCourse(this.user).subscribe((data)=>{
             this.user = data;
             sessionStorage.setItem("user",JSON.stringify(this.user));
         })
@@ -113,10 +111,10 @@ export class ModuleComponent implements OnInit {
 
         //for progress bar
         this.count = 0;
-        for (let i = 0; i < this.chapters.length; i++) {
-            for (let j = 0; j < this.chapters[i].chapterModule.length; j++) {
+        for (let i = 0; i < this.user.course[this.courseId].courseChapter.length; i++) {
+            for (let j = 0; j < this.user.course[this.courseId].courseChapter[i].chapterModule.length; j++) {
                 console.log(this.chapters[i].chapterModule[j].complete)
-                if (this.chapters[i].chapterModule[j].complete) {
+                if (this.user.course[this.courseId].courseChapter[i].chapterModule[j].complete) {
                     this.count++
                     console.log(this.count)
                 }
@@ -140,7 +138,6 @@ export class ModuleComponent implements OnInit {
 
     previous() {
 
-        localStorage.removeItem("kapil")
         let value = this.chapterId + "" + this.moduleId;
         for (let i = this.array.length - 1; i >= 0; i--) {
             if (value == this.array[i] && i != 0) {

@@ -1,48 +1,80 @@
-{
+﻿{
     "courseId":101,
     "courseName": "Core Java",
     "courseImage": "assets/images/java.jpg",
     "courseChapter" : [
         {
-            "chapterName" : "Declarations and Access Control",
+            "chapterName" : "Java Basics",
             "chapterModule" : [
                 {
-                    "moduleName": "Declare Classes",
+                    "moduleName": "Java Basic Syntax",
                     "moduleDetails" : [
                         {
-                            "title": "Declare Classes",
-                            "description" : "When you write code in Java, you're writing classes or interfaces Within those classes as you know  are variables and methods (plus a few other things) How you declare your classes , methods, and variables dramatically affects your code's behavior. For example a public method can be accessed from code running anywhere in your application. Mark that method private though and it vanishes from everyone's radar (except the class in which it was declared). For this objective we'll study the ways in which you can declare and modify (or not) a class. You'll find that we cover modifiers in an extreme level of detail and though we know you're already familiar with them we're starting from the very beginning. Most Java programmers think they know how all the modifiers work but on closer study often find out that they don't (at least not to the degree needed for the exam). Subtle distinctions are everywhere so you need to be absolutely certain you're completely solid on everything in this section's objectives before taking the exam.",
-                            "codesnippet" : "class MyClass { }",
-                            "youtubelink" : "https://www.youtube.com/embed/T2AJQhaUVLI"
+                            "description" : "When we consider a Java program, it can be defined as a collection of objects that communicate via invoking each other's methods. Let us now briefly look into what do class, object, methods, and instance variables mean.",
+                            "subModule" : [
+                                {
+                                    "subtitle" : "Object",
+                                    "subdescription" : "Objects have states and behaviors. Example: A dog has states - color, name, breed as well as behavior such as wagging their tail, barking, eating. An object is an instance of a class."
+                                },
+                                {
+                                    "subtitle" : "Class",
+                                    "subdescription": " A class can be defined as a template/blueprint that describes the behavior/state that the object of its type supports."
+                                },
+                                {
+                                    "subtitle" : "Methods ",
+                                    "subdescription" :"A method is basically a behavior. A class can contain many methods. It is in methods where the logics are written, data is manipulated and all the actions are executed."
+                                },
+                                {
+                                    "subtitle": "Instance Variables",
+                                    "subdescription": " Each object has its unique set of instance variables. An object's state is created by the values assigned to these instance variables."
+                                }
+                            ]
                         },
                         {
-                            "title" : "Class Declarations and Modifiers",
-                            "description" : "Although nested (often called inner) classes are on the exam we'll save nested class declarations for Chapter 8. You're going to love that chapter. No really. Seriously. The following code is a bare-bones class declaration: class MyClass { }  This code compiles just fine, but you can also add modifiers before the class declaration. Modifiers fall into two categories: 1)Access modifiers: public, protected, private 2)Non-access modifiers (including strictfp, final, and abstract)."
+                            "title": "First Java Program",
+                            "description": "Let us look at a simple code that will print the words Hello World.",
+                            "codesnippet" : "public class MyFirstJavaProgram { \n //* This is my first java program. \n* This will print 'Hello World' as the output *// \npublic static void main(String []args) {\n System.out.println('Hello World'); // prints Hello World \n}\n}",
+                            "youtubelink": "https://www.youtube.com/embed/43zD0IRiO30"
                         },
                         {
-                            "title": "Class Access",
-                            "description" : "What does it mean to access a class? When we say code from one class (class A) has access to another class (class B) it means class A can do one of three things: 1)Create an instance of class B. 2)Extend class B (in other words, become a subclass of class B). 3)Access certain methods and variables within class B, depending on the access control of those methods and variables. In effect, access means visibility. If class A can't see class B, the access level of the  methods and variables within class B won't matter; class A won't have any way to access those methods and variables."
+                            "title": "Java Identifiers",
+                            "description" : "All Java components require names. Names used for classes, variables, and methods are called identifiers.\n In Java, there are several points to remember about identifiers. They are as follows − \n ",
+                            "submodule" : [
+                                {
+                                    "subdescription" : "All identifiers should begin with a letter (A to Z or a to z), currency character ($) or an underscore (_).\n After the first character, identifiers can have any combination of characters.\n A key word cannot be used as an identifier.\n Most importantly, identifiers are case sensitive.\nExamples of legal identifiers: age, $salary, _value, __1_value.\n Examples of illegal identifiers: 123abc, -salary."
+                                }
+                            ]
                         },
                         {
-                            "title" : "Default Access",
-                            "description": "A class with default access has no modifier preceding it in the declaration! It's the access control you get when you don't type a modifier in the class declaration. Think of default access as package-level access because a class with default access can be seen only by classes within the same package. For example if class A and class B are in different packages and class A has default access class B won't be able to create an instance of class A or even declare a variable or return type of class A. In fact class B has to pretend that class A doesn't even exist or the compiler will complain. Look at the following source file: As you can see, the superclass (Beverage) is in a different package from the subclass (Tea). The import statement at the top of the Tea file is trying (fingers crossed) to import the Beverage class. The Beverage file compiles fine but when we try to compile the Tea file we get something like:"
-                                            
+                            "title" : "Java Modifiers",
+                            "description": "Like other languages, it is possible to modify classes, methods, etc., by using modifiers. There are two categories of modifiers −",
+                            "submodule": [
+                                {
+                                    "subtitle" : "Access Modifiers ",
+                                    "subdescription" : " default, public , protected, private"
+                                },
+                                {
+                                    "subtitle": "Non-access Modifiers",
+                                    "subdescription" : "final, abstract, strictfp"
+                                }
+                            ]
+                            
                         },
                         {
-                            "title" : "Public Access",
-                            "description": "A class declaration with the public keyword gives all classes from all packages access to the public class. In other words, all classes in the Java Universe (JU) have access to a public class. Don't forget, though, that if a public class you're trying to use is in a different package from the class you're writing, you'll still need to import the public class. In the example from the preceding section, we may not want to place the subclass in the same package as the superclass. To make the code work, we need to add the keyword public in front of the superclass (Beverage) declaration, as follows:"
+                            "title" : "Java Variables",
+                            "description": "Following are the types of variables in Java −\nLocal Variables \n Class Variables (Static Variables) \nInstance Variables (Non-static Variables)"
                         },
                         {
-                            "title": "Other (Nonaccess) Class Modifiers",
-                            "description": "You can modify a class declaration using the keyword final, abstract, or strictfp. These modifiers are in addition to whatever access control is on the class,so you could, for example, declare a class as both public and final. But you can't always mix nonaccess modifiers. You're free to use strictfp in combination with final, for example, but you must never, ever, ever mark a class as both final and abstract. You'll see why in the next two sections. You won't need to know how strictfp works, so we're focusing only on modifying a class as final or abstract. For the exam, you need to know only that strictfp is a keyword and can be used to modify a class or a method, but never a variable. Marking a class as strictfp means that any method code in the class will conform to the IEEE 754 standard rules for floating points. Without that modifier,floating points used in the methods might behave in a platform-dependent way. If you don't declare a class as strictfp, you can still get strictfp behavior on a method-by-method basis, by declaring a method as strictfp. If you don't know the IEEE 754 standard, now's not the time to learn it. You have, as we say, bigger fish to fry."
+                            "title": "Java Arrays",
+                            "description": "Arrays are objects that store multiple variables of the same type. However, an array itself is an object on the heap. We will look into how to declare, construct, and initialize in the upcoming chapters."
                         },
                         {
-                            "title": "Final Classes",
-                            "description" : "When used in a class declaration, the final keyword means the class can't be subclassed. In other words, no other class can ever extend (inherit from) a final class, and any attempts to do so will give you a compiler error.So why would you ever mark a class final? After all, doesn't that violate the whole object-oriented (OO) notion of inheritance? You should make a final class only if you need an absolute guarantee that none of the methods in that class will ever be overridden. If you're deeply dependent on the implementations of certain methods, then using final gives you the security that nobody can change the implementation out from under you.You'll notice many classes in the Java core libraries are final. For example, the String class cannot be subclassed. Imagine the havoc if you couldn't guarantee how a String object would work on any given system your application is running on! If programmers were free to extend the String class (and thus substitute their new String subclass instances where java.lang.String instances are expected),civilization?as we know it?could collapse. So use final for safety, but only when you're certain that your final class has indeed said all that ever needs to be said in its methods. Marking a class final means, in essence, your class can't ever be improved upon, or even specialized, by another programmer.A benefit of having nonfinal classes is this scenario: Imagine you find a problem with a method in a class you're using, but you don't have the source code. So you can't modify the source to improve the method, but you can extend the class and override the method in your new subclass, and substitute the subclass everywhere the original superclass is expected. If the class is final, though, then you're stuck.Let's modify our Beverage example by placing the keyword final in the declaration:"
+                            "title": "Java Enums",
+                            "description" : "Enums were introduced in Java 5.0. Enums restrict a variable to have one of only a few predefined values. The values in this enumerated list are called enums.\nWith the use of enums it is possible to reduce the number of bugs in your code.\nFor example, if we consider an application for a fresh juice shop, it would be possible to restrict the glass size to small, medium, and large. This would make sure that it would not allow anyone to order any size other than small, medium, or large.",
+                            "codesnippet": "class FreshJuice { \n enum FreshJuiceSize{ SMALL, MEDIUM, LARGE } \n FreshJuiceSize size;\n}\npublic class FreshJuiceTest {\npublic static void main(String args[]) {\nFreshJuice juice = new FreshJuice();\njuice.size = FreshJuice.FreshJuiceSize.MEDIUM ;\nSystem.out.println('Size: ' + juice.size);\n}\n}"
                         }
                     ],
                     "isComplete":false
-
                 },
                 {
                     "moduleName" : "Declare Interfaces",
@@ -53,6 +85,58 @@
                         }
                     ],
                     "isComplete":false
+                }
+            ],
+            "chapterQuiz": [
+                {
+                    "quizId": 1,
+                    "question": " What is the range of short data type in Java?",
+                    "option1": "-128 to 127",
+                    "option2": "-32768 to 32767",
+                    "option3": "-2147483648 to 2147483647",
+                    "option4": "None of the mentioned",
+                    "answer": "-32768 to 32767",
+                    "isComplete": "false"
+                },
+                {
+                    "quizId": 2,
+                    "question": "Which one is a valid declaration of a boolean?",,
+                    "option1": " boolean b1 = 1",
+                    "option2":   "boolean b2 = ‘false’",
+                    "option3" :   "boolean b3 = false",
+                    "option4": "boolean b4 = ‘true’",
+                    "answer":"boolean b3 = false",
+                    "isComplete": "false"
+                },
+                {
+                    "quizId": 3,
+                    "question": "Which of these can not be used for a variable name in Java?",
+                    "option1": " identifier",
+                    "option2": "keyword",
+                    "option3": "identifier & keyword",
+                    "option4": " none of the mentioned",
+                    "answer": "keyword",
+                    "isComplete": "false"
+                },
+                {
+                    "quizId": 4,
+                    "question": "Which of these class is superclass of every class in Java?",
+                    "option1" : "String class",
+                    "option2": "Object class",
+                    "option3": "Abstract class",
+                    "option4": "ArrayList class",
+                    "answer": "Object class",
+                    "isComplete": "false"
+                },
+                {
+                    "quizId": 5,
+                    "question": "Which of these keywords cannot be used for a class which has been declared final?",
+                    "option1": "abstract",
+                    "option2": "extends",
+                    "option3": "abstract and extends",
+                    "option4" : "none of the mentioned",
+                    "answer": "abstract",
+                    "isComplete": "false"
                 }
             ]
         },

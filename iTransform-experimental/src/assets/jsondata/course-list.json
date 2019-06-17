@@ -23,8 +23,7 @@
                                     "subtitle": "Methods",
                                     "subdescription" : "A method is basically a behavior. A class can contain many methods.\n It is in methods where the logics are written, data is manipulated and all the /n actions are executed"
                                 }
-                            ],
-                            "youtubelink" : "https://www.youtube.com/embed/T2AJQhaUVLI"
+                            ]
                         },
                         {
                             "title" : "Class Declarations and Modifiers",

@@ -16,8 +16,6 @@ public class Course {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
 	public Course(int courseId, String courseName, String courseImage, CourseChapter[] courseChapter) {
 		super();
 		this.courseId = courseId;
@@ -25,8 +23,6 @@ public class Course {
 		this.courseImage = courseImage;
 		this.courseChapter = courseChapter;
 	}
-
-
 
 	public int getCourseId() {
 		return courseId;
@@ -63,7 +59,6 @@ public class Course {
 	public void setCourseImage(String courseImage) {
 		this.courseImage = courseImage;
 	}
-	
-	
+
 	
 }

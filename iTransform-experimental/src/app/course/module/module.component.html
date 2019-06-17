@@ -4,7 +4,7 @@
     <div class="col-sm-12">
         <div *ngIf="modules" class="modules">
             <h5 class="module-name">{{module.moduleName}}</h5>
-            <ul *ngFor="let mod of module.moduleDetails" class="modulelist">
+            <ul *ngFor="let mod of module.moduleDetails; let i=index;" class="modulelist">
               <li>
                 <h5 class="module-title">{{mod.title}}</h5>
               </li>
@@ -13,8 +13,12 @@
                 <textarea highlight-js [lang]="'java'" [ngModel]="java">
                   {{mod.codesnippet}}
                 </textarea>
-  
-
+              </li>
+              <li >
+                <ul *ngFor="let submod of module.moduleDetails[i].subModule">
+                  <li>{{submod.subtitle}}</li>
+                  <li>{{submod.subdescription}}</li>
+                </ul>
               </li>
               <li *ngIf="mod.youtubelink">
                <iframe [src]="video | safe"  width="420" height="345"></iframe>

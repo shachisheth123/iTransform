@@ -4,6 +4,7 @@ public class ModuleDetails {
 
 	private String title;
 	private String description;
+	private SubModule subModule[];
 	private String codesnippet;
 	private String youtubelink;
 	public ModuleDetails() {
@@ -11,6 +12,16 @@ public class ModuleDetails {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	public ModuleDetails(String title, String description, SubModule[] subModule, String codesnippet,
+			String youtubelink) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.subModule = subModule;
+		this.codesnippet = codesnippet;
+		this.youtubelink = youtubelink;
+	}
 	
 	public String getCodesnippet() {
 		return codesnippet;
@@ -32,15 +43,6 @@ public class ModuleDetails {
 	}
 
 
-	public ModuleDetails(String title, String description, String codesnippet, String youtubelink) {
-		super();
-		this.title = title;
-		this.description = description;
-		this.codesnippet = codesnippet;
-		this.youtubelink = youtubelink;
-	}
-
-
 	public String getTitle() {
 		return title;
 	}
@@ -53,6 +55,18 @@ public class ModuleDetails {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+
+	public SubModule[] getSubModule() {
+		return subModule;
+	}
+
+
+	public void setSubModule(SubModule[] subModule) {
+		this.subModule = subModule;
+	}
+	
+	
 	
 	
 }

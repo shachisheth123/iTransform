@@ -16,6 +16,18 @@
     list-style-type: none;
 }
 
+.youtubelink {
+    text-align: center;
+}
+
+.subdescription {
+    list-style-type: none;
+}
+
+.youtubelink iframe {
+    width: 50%;
+}
+
 .module-title {
     font-size: 15px;
     font-family: "Open Sans", Arial, sans-serif;

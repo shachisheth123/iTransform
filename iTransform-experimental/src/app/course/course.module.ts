@@ -5,21 +5,19 @@ import { MatProgressBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { CourseRoute } from './course.route';
-import { QuizComponent } from './quiz/quiz.component';
 import { CourseService } from './course.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ChaptersComponent } from './chapters/chapters.component';
-import { AllQuizComponent } from './quiz/allquiz/allquiz.component';
 import { ModuleComponent, SafePipe } from './module/module.component';
 import { HighlightJsModule } from 'ngx-highlight-js';
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
     declarations: [
         CourseComponent,
-        QuizComponent,
         ChaptersComponent,
-        AllQuizComponent,
+        QuizComponent,
         ModuleComponent,
         SafePipe
     ],
@@ -40,7 +38,6 @@ import { HighlightJsModule } from 'ngx-highlight-js';
         CourseComponent,
         QuizComponent,
         ChaptersComponent,
-        AllQuizComponent,
         ModuleComponent
     ]
 })

@@ -23,13 +23,27 @@
                                     <div >
                                         <ul *ngFor="let module of course.courseChapter[i].chapterModule; let j=index">
                                             <li class="modulelist">
-                                                <a routerLink="modules/{{courseId}}/{{i}}/{{j}}" class="btn-module" (click)="onClick()">
+                                                <a routerLink="modules/{{courseId}}/{{i}}/{{j}}" class="btn-module" >
                                                     {{module.moduleName}}
                                                 </a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
+
+                                <div id="collapse{{i}}" class="collapse show" [attr.aria-labelledby]="'heading'+i" data-parent="#accordion">
+                                    <div >
+                                        <ul *ngFor="let quiz of course.courseChapter[i].chapterQuiz; let j=index">
+                                            <li class="modulelist">
+                                                <a routerLink="quiz/{{courseId}}/{{i}}/{{j}}" class="btn-module" >
+                                                    Quiz&nbsp;{{quiz.quizId}}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

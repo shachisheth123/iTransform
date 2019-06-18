@@ -37,7 +37,7 @@ export class ChapterQuiz {
     option3: string;
     option4: string;
     answer: string;
-    isComplete: boolean;
+    complete: boolean;
 }
 
 export class ModuleDetails {

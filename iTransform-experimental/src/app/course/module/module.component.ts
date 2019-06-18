@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, PipeTransform, Pipe } from '@angular/core';
 import { CourseService } from '../course.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Courses, CourseChapter, ChapterModule } from '../course';
+import { Courses, CourseChapter, ChapterModule, ChapterQuiz } from '../course';
 import { User } from 'src/app/user/user';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -19,8 +19,7 @@ export class SafePipe implements PipeTransform {
 export class ModuleComponent implements OnInit {
 
     progress = 0;
-    count=0;
-
+    count:number;
     user: User;
     courses: Courses[];
 
@@ -43,7 +42,9 @@ export class ModuleComponent implements OnInit {
     courseForSessionStorage: Courses;
 
     moduleCount = 0;
+    quizCount = 0;
 
+    chapterQuiz: ChapterQuiz[];
     ngOnInit(): void {
 
         this.user = JSON.parse(sessionStorage.getItem("user"));
@@ -61,13 +62,25 @@ export class ModuleComponent implements OnInit {
 
             for (let i = 0; i < this.chapters.length; i++) {
                 this.modules = this.chapters[i].chapterModule;
+                this.chapterQuiz = this.chapters[i].chapterQuiz;
+                console.log(this.course)
+                console.log(this.chapters[i])
+                console.log(this.chapterQuiz)
                 for (let j = 0; j < this.modules.length; j++) {
-                    this.value = i + "" + j;
-
+                    
                     if (this.length == 0) {
                         this.array.push(i + "" + j);
                     }
                 }
+
+                if(this.chapterQuiz != null){
+                    for(let k = 0; k < this.chapterQuiz.length;k++){
+                        if (this.length == 0) {
+                            this.array.push(i + "" + k + "q");
+                        }
+                    }
+                }
+
             }
             this.length = this.array.length;
             console.log(this.array);
@@ -79,6 +92,10 @@ export class ModuleComponent implements OnInit {
         });
 
 
+//**************** */for progress bar start************************************
+        this.count=0;
+        this.moduleCount=0;
+        this.quizCount=0;
         for (let i = 0; i < this.chapters.length; i++) {
             for (let j = 0; j < this.chapters[i].chapterModule.length; j++) {
                 console.log(this.chapters[i].chapterModule[j])
@@ -89,13 +106,23 @@ export class ModuleComponent implements OnInit {
                     console.log(this.count);
                 }
             }
+
+            if(this.chapters[i].chapterQuiz !=null){
+                for (let k = 0; k < this.chapters[i].chapterQuiz.length; k++) {
+                    console.log(this.chapters[i].chapterQuiz[k])
+                    console.log(this.chapters[i].chapterQuiz[k].complete)
+                    this.quizCount++
+                    if (this.chapters[i].chapterQuiz[k].complete) {
+                        this.count++
+                        console.log(this.count);
+                    }
+                }
+            }
         }
-
-       
-        console.log(this.moduleCount);
-        this.progress = Number((this.count / this.moduleCount) * 100);
+          console.log(this.moduleCount + this.quizCount);
+        this.progress = Number((this.count / (this.moduleCount+this.quizCount)) * 100);
         console.log(this.count);
-
+//****************progress bar end********************************* */
 
     }
 
@@ -109,20 +136,37 @@ export class ModuleComponent implements OnInit {
         })
 
 
-        //for progress bar
-        this.count = 0;
-        for (let i = 0; i < this.user.course[this.courseId].courseChapter.length; i++) {
-            for (let j = 0; j < this.user.course[this.courseId].courseChapter[i].chapterModule.length; j++) {
+///**************** */for progress bar start************************************
+       this.count=0;
+       this.moduleCount=0;
+       this.quizCount=0;
+        for (let i = 0; i < this.chapters.length; i++) {
+            for (let j = 0; j < this.chapters[i].chapterModule.length; j++) {
+                console.log(this.chapters[i].chapterModule[j])
                 console.log(this.chapters[i].chapterModule[j].complete)
-                if (this.user.course[this.courseId].courseChapter[i].chapterModule[j].complete) {
+                this.moduleCount++
+                if (this.chapters[i].chapterModule[j].complete) {
                     this.count++
-                    console.log(this.count)
+                    console.log(this.count);
+                }
+            }
+
+            if(this.chapters[i].chapterQuiz !=null){
+                for (let k = 0; k < this.chapters[i].chapterQuiz.length; k++) {
+                    console.log(this.chapters[i].chapterQuiz[k])
+                    console.log(this.chapters[i].chapterQuiz[k].complete)
+                    this.quizCount++
+                    if (this.chapters[i].chapterQuiz[k].complete) {
+                        this.count++
+                        console.log(this.count);
+                    }
                 }
             }
         }
-        console.log(this.moduleCount)
-        console.log(this.count)
-        this.progress = Number((this.count / this.moduleCount) * 100);
+          console.log(this.moduleCount + this.quizCount);
+        this.progress = Number((this.count / (this.moduleCount+this.quizCount)) * 100);
+        console.log(this.count);
+//****************progress bar end********************************* */
 
 
 
@@ -131,7 +175,11 @@ export class ModuleComponent implements OnInit {
             if (value == this.array[i] && i != this.array.length - 1) {
                 let got = this.array[i + 1];
                 console.log(got)
+                if(this.array[i+1].length == 2){
                 this.router.navigate(["chapters/" + this.courseId + "/modules/" + this.courseId + "/"+ Number(got.charAt(0)) + "/" + Number(got.charAt(1))]);
+                }else{
+                this.router.navigate(["chapters/" + this.courseId + "/quiz/" + this.courseId + "/"+ Number(got.charAt(0)) + "/" + Number(got.charAt(1))]);
+                }
             }
         }
     }
@@ -143,7 +191,11 @@ export class ModuleComponent implements OnInit {
             if (value == this.array[i] && i != 0) {
                 let got = this.array[i - 1];
                 console.log(got);
-                this.router.navigate(["chapters/" + this.courseId + "/modules/" + this.courseId + "/" + Number(got.charAt(0)) + "/" + Number(got.charAt(1))]);
+                if(this.array[i-1].length == 2){
+                    this.router.navigate(["chapters/" + this.courseId + "/modules/" + this.courseId + "/"+ Number(got.charAt(0)) + "/" + Number(got.charAt(1))]);
+                    }else{
+                    this.router.navigate(["chapters/" + this.courseId + "/quiz/" + this.courseId + "/"+ Number(got.charAt(0)) + "/" + Number(got.charAt(1))]);
+                    }
             }
         }
     }

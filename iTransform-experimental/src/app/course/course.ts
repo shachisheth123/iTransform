@@ -27,7 +27,7 @@ export class ChapterQuiz {
     option3: string;
     option4: string;
     answer: string;
-    isComplete: boolean;
+    complete: boolean;
 }
 
 export class ModuleDetails {
@@ -44,13 +44,5 @@ export class SubModule {
     subdescription: string;
 }
 
-export class Quiz {
-    quizId: number;
-    question: string;
-    option1: string;
-    option2: string;
-    option3: string;
-    option4: string;
-    answer: string;
-}
+
 

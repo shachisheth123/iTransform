@@ -1,3 +1,5 @@
+<h5>course progress {{progress}}%</h5>
+<mat-progress-bar mode="determinate" value="{{progress}}"></mat-progress-bar>
 <h2>Quiz Time</h2>
 <div class="container">
     <div>
@@ -7,27 +9,39 @@
             <div class="form-group">
                 <div class="form-check form-check-inline">
                     <input type="radio" name="option" 
-                        class="form-check-input"    [(ngModel)]="choose"/>{{quiz.option1}}<br>
-                </div>
+                        class="form-check-input"    [(ngModel)]="option"/>{{quiz.option1}}
+                </div><br>
 
                 <div class="form-check form-check-inline">
                         <input type="radio" name="option" 
-                            class="form-check-input"   [(ngModel)]="choose"/>{{quiz.option2}}<br>
-                    </div>
+                            class="form-check-input"   [(ngModel)]="option"/>{{quiz.option2}}
+                    </div><br>
 
                     <div class="form-check form-check-inline">
                         <input type="radio" name="option" 
-                            class="form-check-input"   [(ngModel)]="choose"/>{{quiz.option3}}<br>
-                    </div>
+                            class="form-check-input"   [(ngModel)]="option"/>{{quiz.option3}}
+                    </div><br>
 
                     <div class="form-check form-check-inline">
                         <input type="radio" name="option" 
-                            class="form-check-input"   [(ngModel)]="choose"/>{{quiz.option4}}<br>
-                    </div>
+                            class="form-check-input"   [(ngModel)]="option"/>{{quiz.option4}}
+                    </div><br>
                  
                     <button type="submit" class="btn btn-block btn-primary" >Submit</button>
             </div>
         </form>
 
     </div>
+
+    <nav aria-label="..." class="next-prev">
+        <ul class="pagination">
+          <li class="page-item nav-prev">
+            <a class="page-link" (click)="previous()" >Previous</a>
+          </li>
+          
+          <li class="page-item nav-next">
+            <a class="page-link" (click)="next()">Next</a>
+          </li>
+        </ul>
+      </nav>
 </div>

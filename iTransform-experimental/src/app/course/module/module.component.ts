@@ -108,6 +108,15 @@ export class ModuleComponent implements OnInit {
                 if (this.chapters[i].chapterModule[j].complete) {
                     this.count++;
                     console.log(this.count);
+                    var x = document.querySelectorAll('.btn-module');
+                    var p;
+                    // for( p= 0; p < x.length; p++) {
+                        let spa = document.createElement('span');
+                        spa.classList.add('fa');
+                        spa.classList.add('fa-check');
+                        spa.style.color = "#39dc39";
+                        x[j].appendChild(spa);
+        
                 }
 
             }
@@ -129,15 +138,19 @@ export class ModuleComponent implements OnInit {
         console.log(this.count);
 //****************progress bar end********************************* */
 
+
+        // **************** completed task*****************/
+        
+      
     }
     
 
     next() {
         this.user.course[this.courseId].courseChapter[this.chapterId].chapterModule[this.moduleId].complete = true;
-       this.courseService.updateUserCourse(this.user).subscribe((data)=>{
+        this.courseService.updateUserCourse(this.user).subscribe((data)=>{
             this.user = data;
-            sessionStorage.setItem("user",JSON.stringify(this.user));
-        })
+            sessionStorage.setItem('user',JSON.stringify(this.user));
+        });
 
 
 ///**************** */for progress bar start************************************

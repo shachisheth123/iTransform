@@ -16,6 +16,11 @@
     list-style-type: none;
 }
 
+.fa-check {
+    color: #39dc39;
+    font-size: 20px;
+}
+
 .youtubelink {
     text-align: center;
 }

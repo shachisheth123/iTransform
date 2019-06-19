@@ -4,7 +4,7 @@
   <h2 class="quiz-head">Quiz Time</h2>
 <div class="container">
     <div>
-       <p>{{quiz.question}}</p><div *ngIf="quiz.complete" class="fa fa-check" > completed</div>
+       <p>{{quiz.question}}</p><div *ngIf="quiz.complete" class="fa fa-check tick" > completed</div>
 
         <form (ngSubmit)="onSubmit()">
             <div class="form-group">

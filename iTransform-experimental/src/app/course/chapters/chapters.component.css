@@ -29,6 +29,10 @@
     background: #f5f6f6 !important;
 }
 
+.tick {
+    color: #42c142;
+}
+
 .main-box {
     margin-left: 224px;
     background: #fff;

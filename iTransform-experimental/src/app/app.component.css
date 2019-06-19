@@ -14,6 +14,10 @@ header {
     box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
 }
 
+.dp {
+    align-self: center;
+}
+
 .navbar .itransform-logo {
     color: #000;
     font-family: 'Open Sans', sans-serif;
@@ -73,3 +77,19 @@ header {
     position: relative;
     color: #000;
 } */
+
+.dropdown-menu {
+    min-width: 6rem;
+    text-align: center;
+    left: -5px;
+    top: 36px;
+}
+
+.dropdown-menu a {
+    padding: 3px 0;
+    cursor: pointer;
+}
+
+.dropdown-toggle {
+    font-size: 15px;
+}

@@ -7,11 +7,13 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { userRoute } from './user.route';
 import { UserService } from './user.service';
+import { LogoutComponent } from './logout.component';
 
 @NgModule({
     declarations: [
         RegistrationComponent,
-        LoginComponent
+        LoginComponent,
+        LogoutComponent
     ],
     imports: [
         BrowserModule,

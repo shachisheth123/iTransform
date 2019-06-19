@@ -104,19 +104,10 @@ export class ModuleComponent implements OnInit {
             for (let j = 0; j < this.chapters[i].chapterModule.length; j++) {
                 console.log(this.chapters[i].chapterModule[j])
                 console.log(this.chapters[i].chapterModule[j].complete)
-                this.moduleCount++
+                this.moduleCount++;
                 if (this.chapters[i].chapterModule[j].complete) {
                     this.count++;
                     console.log(this.count);
-
-                   // ************* complete task ****/
-                    var x = document.querySelectorAll('.btn-module');
-                        let spa = document.createElement('span');
-                        spa.classList.add('fa');
-                        spa.classList.add('fa-check');
-                        spa.style.color = "#39dc39";
-                        x[j].appendChild(spa);
-        
                 }
 
             }

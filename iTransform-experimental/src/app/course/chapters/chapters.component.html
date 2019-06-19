@@ -26,6 +26,7 @@
                                                 <a routerLink="modules/{{courseId}}/{{i}}/{{j}}" class="btn-module" id="tick" >
                                                     {{module.moduleName}}
                                                 </a>
+                                                <div *ngIf="module.complete" class="fa fa-check tick"></div>
                                             </li>
                                         </ul>
                                     </div>
@@ -38,6 +39,7 @@
                                                 <a routerLink="quiz/{{courseId}}/{{i}}/{{j}}" class="btn-module" >
                                                     Quiz&nbsp;{{quiz.quizId}}
                                                 </a>
+                                                <div *ngIf="quiz.complete" class="fa fa-check tick" ></div>
                                             </li>
                                         </ul>
                                     </div>

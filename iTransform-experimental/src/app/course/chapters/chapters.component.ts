@@ -28,7 +28,7 @@ export class ChaptersComponent implements OnInit {
 
         this.user = JSON.parse(sessionStorage.getItem("user"));
         this.courses = this.user.course;
-        
+
         this.route.paramMap.subscribe((map) => {
            this.courseId = Number(map.get("courseId"));
         

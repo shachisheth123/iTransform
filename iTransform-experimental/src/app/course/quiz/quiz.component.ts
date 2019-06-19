@@ -119,17 +119,19 @@ export class QuizComponent implements OnInit{
 
     option:string;
     onSubmit(){
-        if(this.quiz.answer == this.option){
-            this.user.course[this.courseId].courseChapter[this.chapterId].chapterQuiz[this.quizId].complete = true;
-            
-            this.courseService.updateUserCourse(this.user).subscribe((data)=>{
-                this.user = data;
-                sessionStorage.setItem("user",JSON.stringify(this.user));
-                alert("Your Answer is Correct Please Press Next Button");
-            })
-        }else{
-            alert("try again!! answer is incorrect");
-        }   
+        if(this.quiz.complete != true){
+            if(this.quiz.answer == this.option){
+                this.user.course[this.courseId].courseChapter[this.chapterId].chapterQuiz[this.quizId].complete = true;
+                
+                this.courseService.updateUserCourse(this.user).subscribe((data)=>{
+                    this.user = data;
+                    sessionStorage.setItem("user",JSON.stringify(this.user));
+                    alert("Your Answer is Correct Please Press Next Button");
+                })
+            }else{
+                alert("try again!! answer is incorrect");
+            }   
+        }
     }
 
 
@@ -138,9 +140,6 @@ export class QuizComponent implements OnInit{
 
 
 next() {
-        
-
-
 ///**************** */for progress bar start************************************
         this.count=0;
         this.moduleCount=0;

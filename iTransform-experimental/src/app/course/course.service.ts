@@ -10,7 +10,7 @@ export class CourseService{
    // baseUrl="/src/api/course0.json";
     baseUrl = "http://localhost:8083/user"
     constructor(private http: HttpClient) {}
-    
+
     // getQuiz(): Observable<Quiz[]> {
     //     return this.http.get<Quiz[]>(this.baseUrlForQuiz);
     // }
@@ -19,9 +19,9 @@ export class CourseService{
         return this.http.get<Courses[]>(this.baseUrl);
     }
 
-    getCourseById():Observable<Courses>{
-        return this.http.get<Courses>("/assets/jsondata/corejava.json");
-    }
+    // getCourseById():Observable<Courses>{
+    //     return this.http.get<Courses>("/assets/jsondata/corejava.json");
+    // }
 
     updateUserCourse(user:User):Observable<User>{
         return this.http.put<User>(this.baseUrl,user);

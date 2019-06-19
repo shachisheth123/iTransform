@@ -108,9 +108,9 @@ export class ModuleComponent implements OnInit {
                 if (this.chapters[i].chapterModule[j].complete) {
                     this.count++;
                     console.log(this.count);
+
+                   // ************* complete task ****/
                     var x = document.querySelectorAll('.btn-module');
-                    var p;
-                    // for( p= 0; p < x.length; p++) {
                         let spa = document.createElement('span');
                         spa.classList.add('fa');
                         spa.classList.add('fa-check');
@@ -139,9 +139,7 @@ export class ModuleComponent implements OnInit {
 //****************progress bar end********************************* */
 
 
-        // **************** completed task*****************/
-        
-      
+
     }
     
 

@@ -7,6 +7,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { userRoute } from './user.route';
 import { UserService } from './user.service';
+import { HttpClientModule  } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+
 
 @NgModule({
     declarations: [
@@ -18,14 +22,17 @@ import { UserService } from './user.service';
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
-        RouterModule.forChild(userRoute)
+        HttpClientModule,
+        HttpClientTestingModule,
+        RouterModule.forChild(userRoute),
+    
     ],
     exports: [
         RegistrationComponent,
         LoginComponent,
     ],
     providers:[
-        UserService
+    UserService
     ]
 })
 export class UserModule {

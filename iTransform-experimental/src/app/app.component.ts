@@ -11,6 +11,6 @@ import { User } from './user/user';
 export class AppComponent {
 
   user : User;
-       
+  title = 'iTransform-project';
 
 }

@@ -35,7 +35,7 @@ export class ModuleComponent implements OnInit {
     courseId: number;
     chapterId: number;
     moduleId: number;
-        video: string;
+     video: string;
     array: Array<String> = [];
     value: string;
     length = 0;

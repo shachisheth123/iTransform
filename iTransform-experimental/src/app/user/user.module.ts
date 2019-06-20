@@ -7,15 +7,20 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { userRoute } from './user.route';
 import { UserService } from './user.service';
+<<<<<<< HEAD
 import { HttpClientModule  } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 
+=======
+import { LogoutComponent } from './logout.component';
+>>>>>>> 238af308eebadd81d9c3b94f1f7e241cd45ea638
 
 @NgModule({
     declarations: [
         RegistrationComponent,
-        LoginComponent
+        LoginComponent,
+        LogoutComponent
     ],
     imports: [
         BrowserModule,

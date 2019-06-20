@@ -39,10 +39,20 @@ export class LoginComponent implements OnInit {
             this.user = data;
             console.log(data);
             if (this.user != null) {
+<<<<<<< HEAD
                 // setting session storage
                 sessionStorage.setItem("user", JSON.stringify(this.user));
                 // console.log(JSON.parse(sessionStorage.getItem("user")));
                 this.router.navigate(['/courses']);
+=======
+                    // setting session storage
+                    sessionStorage.setItem("user", JSON.stringify(this.user));
+                    // console.log(JSON.parse(sessionStorage.getItem("user")));
+                    // document.getElementById('loginbtn').style.display = 'none';
+                    // document.getElementById('signupbtn').style.display = 'none';
+                    this.router.navigate(['/courses']);
+                    window.location.href = '/courses';
+>>>>>>> 238af308eebadd81d9c3b94f1f7e241cd45ea638
             } else {
                 alert('please enter correct userName and password');
                 this.router.navigate(['/login']);

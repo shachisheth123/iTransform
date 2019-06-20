@@ -25,7 +25,7 @@ export class ModuleComponent implements OnInit {
 
     constructor(private courseService: CourseService,
                 private route: ActivatedRoute,
-                private router: Router) { }
+                private router: Router, private sanitizer: DomSanitizer) { }
 
     actualCourse: Courses;
     course: Courses;
@@ -35,7 +35,11 @@ export class ModuleComponent implements OnInit {
     courseId: number;
     chapterId: number;
     moduleId: number;
+<<<<<<< HEAD
      video: string;
+=======
+    video: string;
+>>>>>>> 238af308eebadd81d9c3b94f1f7e241cd45ea638
     array: Array<String> = [];
     value: string;
     length = 0;
@@ -56,7 +60,7 @@ export class ModuleComponent implements OnInit {
             this.chapterId = Number(map.get("chapterId"));
             this.moduleId = Number(map.get("moduleId"));
 
-            console.log(this.chapterId + "" + this.moduleId)
+            console.log(this.chapterId + "" + this.moduleId);
             this.course = this.courses[this.courseId];
             this.chapters = this.course.courseChapter;
 
@@ -87,10 +91,14 @@ export class ModuleComponent implements OnInit {
             console.log(this.course);
             this.module = this.chapters[this.chapterId].chapterModule[this.moduleId];
             console.log(this.module);
-            console.log(this.module.moduleDetails[0].youtubelink);
-            this.video = this.module.moduleDetails[0].youtubelink;
+            // console.log(this.module.moduleDetails.youtubelink);
+            // this.video = this.module.moduleDetails.youtubelink;
+            for(let m=0; m< this.module.moduleDetails.length; m++) {
+                console.log(this.module.moduleDetails[m].youtubelink);
+                this.video = this.module.moduleDetails[m].youtubelink;
+            }
         });
-
+        
 
 //**************** */for progress bar start************************************
         this.count=0;
@@ -100,11 +108,12 @@ export class ModuleComponent implements OnInit {
             for (let j = 0; j < this.chapters[i].chapterModule.length; j++) {
                 console.log(this.chapters[i].chapterModule[j])
                 console.log(this.chapters[i].chapterModule[j].complete)
-                this.moduleCount++
+                this.moduleCount++;
                 if (this.chapters[i].chapterModule[j].complete) {
-                    this.count++
+                    this.count++;
                     console.log(this.count);
                 }
+
             }
 
             if(this.chapters[i].chapterQuiz !=null){
@@ -124,16 +133,17 @@ export class ModuleComponent implements OnInit {
         console.log(this.count);
 //****************progress bar end********************************* */
 
-    }
 
+
+    }
     
 
     next() {
         this.user.course[this.courseId].courseChapter[this.chapterId].chapterModule[this.moduleId].complete = true;
-       this.courseService.updateUserCourse(this.user).subscribe((data)=>{
+        this.courseService.updateUserCourse(this.user).subscribe((data)=>{
             this.user = data;
-            sessionStorage.setItem("user",JSON.stringify(this.user));
-        })
+            sessionStorage.setItem('user',JSON.stringify(this.user));
+        });
 
 
 ///**************** */for progress bar start************************************
@@ -199,6 +209,5 @@ export class ModuleComponent implements OnInit {
             }
         }
     }
-
 
 }

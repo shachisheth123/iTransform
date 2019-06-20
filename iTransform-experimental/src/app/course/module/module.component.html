@@ -14,14 +14,14 @@
                   {{mod.codesnippet}}
                 </textarea>
               </li>
-              <li >
+              <li *ngIf="module.moduleDetails[i].subModule">
                 <ul *ngFor="let submod of module.moduleDetails[i].subModule">
-                  <li>{{submod.subtitle}}</li>
-                  <li>{{submod.subdescription}}</li>
+                  <li *ngIf="submod.subtitle">{{submod.subtitle}}</li>
+                  <li *ngIf="submod.subdescription" class="subdescription">{{submod.subdescription}}</li>
                 </ul>
               </li>
-              <li *ngIf="mod.youtubelink">
-               <iframe [src]="video | safe"  width="420" height="345"></iframe>
+              <li *ngIf="mod.youtubelink" class="youtubelink">
+               <iframe [src]="mod.youtubelink | safe"  width="420" height="345"></iframe>
               </li>
             </ul>
             </div>

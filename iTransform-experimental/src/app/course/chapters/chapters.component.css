@@ -14,6 +14,7 @@
     padding-top: 100px;
     width:224px;
     background: #f5f6f6 !important;
+    overflow-y: scroll;
 }
 
 .sideb {
@@ -26,6 +27,10 @@
     overflow: hidden;
     top: 60px;
     background: #f5f6f6 !important;
+}
+
+.tick {
+    color: #42c142;
 }
 
 .main-box {

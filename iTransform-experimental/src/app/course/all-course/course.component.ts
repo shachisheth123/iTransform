@@ -16,5 +16,8 @@ export class CourseComponent implements OnInit{
         this.user = JSON.parse(sessionStorage.getItem("user"));
         this.courses = this.user.course;
         console.log(this.courses);
+
+       
     }
+
 }
